@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Age Calculator</title>
+</head>
+<body>
+  <h2>Age Calculator</h2>
+  
+  <label for="dob">Enter your Date of Birth:</label>
+  <input type="date" id="dob">
+  <button onclick="calculateAge()">Calculate Age</button>
+
+  <p id="result"></p>
+
+  <script>
+    function calculateAge() {
+      let dob = document.getElementById("dob").value;
+      if (!dob) {
+        document.getElementById("result").innerText = "⚠️ Please enter your date of birth.";
+        return;
+      }
+
+      let dobDate = new Date(dob);
+      let today = new Date();
+
+      let age = today.getFullYear() - dobDate.getFullYear();
+      let monthDiff = today.getMonth() - dobDate.getMonth();
+      let dayDiff = today.getDate() - dobDate.getDate();
+
+      // Adjust age if birthday hasn’t occurred yet this year
+      if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+        age--;
+      }
+
+      document.getElementById("result").innerText = "🎂 Your age is: " + age + " years.";
+    }
+  </script>
+</body>
+</html>
