@@ -28,3 +28,4 @@ let result;
 const arr1=[2,4,48,9];
 const ouput=arr1.map((val)=> val+1);
 console.log(ouput);
+
